@@ -430,6 +430,165 @@ If needed reload the shell:
 source ~/.bashrc
 ```
 
+# Task 2.0 — Share Using a Reserved Address (zrok)
+
+Instead of using a **random public URL**, zrok allows you to **reserve a permanent share address**.
+This ensures that every time you start the share, the **same URL is used**.
+
+Example difference:
+
+Random share:
+
+```
+https://a1b2c3d4.share.zrok.io
+```
+
+Reserved share:
+
+```
+https://test-demo.share.zrok.io
+```
+
+---
+
+# Why Use Reserved Shares
+
+Benefits:
+
+* Stable URL
+* Easy to remember
+* Perfect for demos and development
+* No need to send a new link every time
+
+---
+
+# Step 1 — Login to Zrok Console
+
+Open:
+
+```
+https://api-v1.zrok.io
+```
+
+Login to your account.
+
+---
+
+# Step 2 — Create a Reserved Share
+
+Run the following command in terminal:
+
+```bash
+zrok reserve public --unique-name my-demo
+```
+
+Example output:
+
+```
+reserved share token: xxxxxx
+frontend endpoint: https://my-demo.share.zrok.io
+```
+
+Your reserved address will now be:
+
+```
+https://my-demo.share.zrok.io
+```
+
+---
+
+# Step 3 — Start the Reserved Share
+
+To expose your local server using the reserved address:
+
+```bash
+zrok share reserved my-demo 8000
+```
+
+or
+
+```bash
+zrok share reserved my-demo http://localhost:8000
+```
+
+Now your application will be accessible at:
+
+```
+https://my-demo.share.zrok.io
+```
+
+---
+
+# Example — Share a Frappe Site
+
+If your Frappe bench runs on:
+
+```
+http://localhost:8000
+```
+
+Run:
+
+```bash
+zrok share reserved my-demo 8000
+```
+
+Now your Frappe site will be accessible using the reserved URL.
+
+---
+
+# Stop the Share
+
+Press:
+
+```
+CTRL + C
+```
+
+The reserved address will remain saved and can be reused later.
+
+---
+
+# View Reserved Shares
+
+To see all reserved shares:
+
+```bash
+zrok overview
+```
+
+---
+
+# Release Reserved Share
+
+If you want to delete the reserved share:
+
+```bash
+zrok release my-demo
+```
+
+---
+
+# Quick Workflow
+
+Reserve a URL
+
+```bash
+zrok reserve public --unique-name my-demo
+```
+
+Start share
+
+```bash
+zrok share reserved my-demo 8000
+```
+
+Access your app
+
+```
+https://my-demo.share.zrok.io
+```
+
 ---
 
 # Security Warning
