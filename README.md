@@ -637,6 +637,4 @@ Access your local application from anywhere using the generated URL.
 
 ---
 
-Author
 
-Abhishek Chougule
